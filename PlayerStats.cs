@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -130,7 +130,7 @@ public class PlayerStats : MonoBehaviour
 	{
 		// SceneSwitch, switchTo("GameOver");
 		isDead = false;
-		EditorSceneManager.LoadScene("GameOver");
+		SceneManager.LoadScene("GameOver");
 	}
 
 	private void InstaKill() { DeathScreen(); }

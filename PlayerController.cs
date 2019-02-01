@@ -6,12 +6,12 @@ using System;
 public class PlayerController : MonoBehaviour
 {
 	// Components.
-	[HideInInspector]
-	public Rigidbody2D rb;
-	public Animator anim;
+	[HideInInspector] public Rigidbody2D rb;
+	[HideInInspector] public Animator anim;
 	private PlayerStats _stats;
 	private float gravity = 4f;
 	public float velocity;
+	public static bool gameOver = false;
 
 	// Movement.
 	private float speed = 7f;
@@ -60,6 +60,10 @@ public class PlayerController : MonoBehaviour
 		// End flamethrower.
 		if (Input.GetKeyUp(KeyCode.LeftShift)) evt_stopFlames();
 		if (Input.GetKeyUp(KeyCode.LeftShift)) anim.SetBool("isAttacking", false);
+
+		// Force quit game.
+		if (gameOver)
+			if (Input.GetKeyDown(KeyCode.Escape)) QuitGame();
 	}
 
 	private void Movement()
@@ -95,5 +99,10 @@ public class PlayerController : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	private void QuitGame()
+	{
+		Application.Quit();
 	}
 }

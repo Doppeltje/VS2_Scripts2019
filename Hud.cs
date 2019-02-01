@@ -42,6 +42,7 @@ public class Hud : MonoBehaviour
 
 	private void GameWin()
 	{
+		PlayerController.gameOver = true;
 		Animator logoAnim = GameObject.Find("Logo").GetComponent<Animator>();
 		logoAnim.SetTrigger("GameWin");
 	}

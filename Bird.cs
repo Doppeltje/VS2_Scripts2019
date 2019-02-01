@@ -6,7 +6,6 @@ public class Bird : MonoBehaviour
 {
 	[SerializeField] public float speed;
 	[SerializeField] private float moveSpeed;
-	private float damage = 8;
 	private float health = 40;
 
 	public bool walkingClockwards, facingLeft, flipSprite, useRigidbody;
@@ -91,9 +90,10 @@ public class Bird : MonoBehaviour
 	{
 		distance = transform.position.x - target.transform.position.x;
 
-		isAttacking = distance > 0 && distance < attackRange ? true : false;
-		isCharging = distance > 0 && distance < chargeRange || distance < -attackRange && distance > -chargeRange ? true : false;
-		isIdle = !isAttacking && !isCharging ? true : false;
+		isAttacking = distance > 0 && distance < attackRange;
+		isCharging = distance > 0 && distance < chargeRange || distance < -attackRange && distance > -chargeRange;
+		isIdle = !isAttacking && !isCharging;
+
 
 		if (isAttacking) isCharging = false;
 	}
